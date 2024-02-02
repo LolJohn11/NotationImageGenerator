@@ -51,7 +51,7 @@ class VirtualKeyboardApp:
 
         # Include Dark Checkbox
         include_dark_checkbox = tk.Checkbutton(self.root, text="Include dark notation", variable=self.include_dark)
-        include_dark_checkbox.grid(row=i + 1, column=0, pady=10, columnspan=4)
+        include_dark_checkbox.grid(row=i + 1, column=0, pady=10, columnspan=5)
 
         # Backspace Button
         backspace_button = tk.Button(self.root, text="Backspace", command=self.remove_last_image)
@@ -62,12 +62,12 @@ class VirtualKeyboardApp:
         clear_button.grid(row=i + 1, column=0, pady=5, columnspan=2)
 
         # Export Button
-        export_button = tk.Button(self.root, text="Export as PNG", command=self.export_images)
-        export_button.grid(row=i + 2, column=0, pady=10, columnspan=4)
+        export_button = tk.Button(self.root, text="Save as PNG", command=self.export_images)
+        export_button.grid(row=i + 2, column=0, pady=10, columnspan=5)
 
         # Preview Field
         self.preview_frame = tk.Frame(self.root)
-        self.preview_frame.grid(row=i + 3, column=0, columnspan=4, pady=5)
+        self.preview_frame.grid(row=i + 3, column=0, columnspan=5, pady=5)
 
     def load_and_group_images(self):
         # Load Images from the "assets" folder, group them by prefix, and sort within each group
@@ -147,7 +147,7 @@ class VirtualKeyboardApp:
 
         # Export normal image
         combined_image.save("exported_image.png")
-        messagebox.showinfo("Export Successful", "Image file(s) created successfully.")
+        messagebox.showinfo("Save Successful", "Image file(s) created successfully.")
 
         # Export dark image if checkbox is checked
         if self.include_dark.get():

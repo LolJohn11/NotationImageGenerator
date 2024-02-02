@@ -13,6 +13,8 @@ class VirtualKeyboardApp:
         if os.path.exists(icon_path):
             self.root.iconbitmap(icon_path)
 
+        self.root.geometry("1056x505")  # Adjust the width as needed
+
         self.images_folder = "assets"
         self.selected_images = []
         self.include_dark = tk.BooleanVar(value=False)
@@ -122,12 +124,28 @@ class VirtualKeyboardApp:
             widget.destroy()
 
         # Display the selected images in the preview field
-        for i, image_path in enumerate(self.selected_images):
-            img = Image.open(image_path).resize((50, 50), Image.LANCZOS)  # Resize for display
-            img_tk = ImageTk.PhotoImage(img)
-            label = tk.Label(self.preview_frame, image=img_tk)
-            label.image = img_tk
-            label.grid(row=0, column=i, padx=0)
+        total_width = len(self.selected_images) * 50  # Original width without scaling
+        max_width = 19 * 50  # Maximum width without scaling
+
+        if total_width > max_width:
+            # Scale down images dynamically
+            scale_factor = max_width / total_width
+            scaled_size = 50 * scale_factor
+
+            for i, image_path in enumerate(self.selected_images):
+                img = Image.open(image_path).resize((int(scaled_size),int(scaled_size)), Image.LANCZOS)
+                img_tk = ImageTk.PhotoImage(img)
+                label = tk.Label(self.preview_frame, image=img_tk)
+                label.image = img_tk
+                label.grid(row=0, column=i, padx=0)
+        else:
+            # Display images without scaling
+            for i, image_path in enumerate(self.selected_images):
+                img = Image.open(image_path).resize((50, 50), Image.LANCZOS)  # Resize for display
+                img_tk = ImageTk.PhotoImage(img)
+                label = tk.Label(self.preview_frame, image=img_tk)
+                label.image = img_tk
+                label.grid(row=0, column=i, padx=0)
 
     def export_images(self):
         if not self.selected_images:
@@ -161,7 +179,7 @@ class VirtualKeyboardApp:
                 current_width += 80
 
             dark_image.save("exported_image_dark.png")
-            #messagebox.showinfo("Exported", "Dark Images exported as PNG: exported_image_Dark.png")
+            # messagebox.showinfo("Exported", "Dark Images exported as PNG: exported_image_Dark.png")
 
 if __name__ == "__main__":
     root = tk.Tk()

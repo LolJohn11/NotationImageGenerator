@@ -1,2 +1,2 @@
 # NotationImageGenerator
-Generating images of combo strings notations using assets fro,m Tekken 8.
+Generating images of combo strings notations using assets for Tekken 8.

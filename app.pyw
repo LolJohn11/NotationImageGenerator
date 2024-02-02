@@ -22,12 +22,12 @@ class VirtualKeyboardApp:
     def create_widgets(self):
         # Selected Images Display
         self.image_frame = tk.Frame(self.root)
-        self.image_frame.grid(row=0, column=0, columnspan=4, pady=10)
+        self.image_frame.grid(row=0, column=0, columnspan=5, pady=10)
 
         # Load Images from the "assets" folder, group them by prefix, and sort within each group
         image_files = self.load_and_group_images()
 
-        self.image_buttons = [[] for _ in range(4)]
+        self.image_buttons = [[] for _ in range(5)]
 
         for group in image_files:
             for filename in group:
@@ -41,7 +41,7 @@ class VirtualKeyboardApp:
                 button.image = img_tk
 
                 # Determine the row based on the prefix
-                row = int(filename.split('_')[0][1])
+                row = min(int(filename.split('_')[0][1]), 5)  # Ensure row doesn't exceed 5
                 self.image_buttons[row - 1].append(button)
 
         # Arrange buttons in separate rows
@@ -74,13 +74,16 @@ class VirtualKeyboardApp:
         image_files = sorted(os.listdir(self.images_folder))
         image_files = sorted(image_files, key=lambda x: (x.split('_')[0], x))
 
-        grouped_images = []
-        current_group = []
+        grouped_images = [[] for _ in range(5)]
 
         for filename in image_files:
-            current_group.append(filename)
+            if "_Dark" in filename:
+                continue  # Skip buttons with "_Dark" suffix
 
-        grouped_images.append(current_group)
+            image_path = os.path.join(self.images_folder, filename)
+            # Determine the row based on the prefix
+            row = min(int(filename.split('_')[0][1]), 5)  # Ensure row doesn't exceed 5
+            grouped_images[row - 1].append(filename)
 
         return grouped_images
 

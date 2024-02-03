@@ -1,4 +1,5 @@
 import os
+import ctypes
 import tkinter as tk
 from tkinter import filedialog, messagebox
 from PIL import Image, ImageTk
@@ -7,6 +8,9 @@ class VirtualKeyboardApp:
     def __init__(self, root):
         self.root = root
         self.root.title("Notation Image Generator")
+
+        myappid = 'mycompany.myproduct.subproduct.version' # arbitrary string
+        ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(myappid)
 
         # Set window icon
         icon_path = os.path.join(os.getcwd(), "icon.ico")

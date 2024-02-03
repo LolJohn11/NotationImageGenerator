@@ -17,12 +17,12 @@ class VirtualKeyboardApp:
         if os.path.exists(icon_path):
             self.root.iconbitmap(icon_path)
 
-        self.root.geometry("1056x505")  # Adjust the width as needed
+        self.root.geometry("1188x511")  # Window size
         
         self.assets_types = [
             ("T8 Default", "assets"),
-            ("PlayStation", "assets_ps"),
             ("Xbox", "assets_xbox"),
+            ("PlayStation", "assets_ps"),
         ]
 
         self.selected_images = []

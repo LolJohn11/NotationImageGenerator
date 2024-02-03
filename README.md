@@ -1,13 +1,13 @@
 # Notation Image Generator
 Generating images of combo notations for Tekken 8. Done with ChatGPT and some blind tinkering.
 
-![image](https://github.com/LolJohn11/NotationImageGenerator/assets/49366383/7bb186c0-ed31-46cf-860b-4943606ee710)
+![image](https://github.com/LolJohn11/NotationImageGenerator/assets/49366383/db03d1a9-035d-4736-9a1b-212be86cb422)
 
 ## Usage
 1. Clone the repo OR download it as a .zip archive.
 2. Launch the `app.pyw` file.
 
-## Examples of different notation styles
+## Examples of different button styles
 
 Default:
 

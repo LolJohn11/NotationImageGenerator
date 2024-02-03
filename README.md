@@ -1,7 +1,7 @@
 # Notation Image Generator
 Generating images of combo notations for Tekken 8. Done with ChatGPT and some blind tinkering.
 
-![image](https://github.com/LolJohn11/NotationImageGenerator/assets/49366383/cfa19e89-275f-4d4e-8e43-99ef2784010f)
+![image](https://github.com/LolJohn11/NotationImageGenerator/assets/49366383/dc5b2d7b-0ce3-4798-b708-ca0a2c04d603)
 
 ## Usage
 1. Clone the repo OR download it as a .zip archive.
@@ -23,5 +23,5 @@ Xbox:
 
 ## To-do:
 - [ ] Character-specific buttons (stances, etc.)
-- [ ] Adding a colored background to the exported image
 - [ ] Tooltips for text buttons
+- [ ] Adding a colored background to the exported image

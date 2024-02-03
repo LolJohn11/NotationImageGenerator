@@ -69,7 +69,7 @@ class VirtualKeyboardApp:
                 button.grid(row=i, column=j, padx=5, pady=5)
 
         # Drop-down menu for selecting assets
-        assets_menu_label = tk.Label(self.root, text="Button type:")
+        assets_menu_label = tk.Label(self.root, text="Button style:")
         assets_menu_label.grid(row=i + 1, column=3, pady=10, columnspan=1)
         assets_menu = tk.OptionMenu(self.root, self.images_folder_var, *[option[0] for option in self.assets_types])
         assets_menu.grid(row=i + 1, column=3, pady=10, columnspan=2)

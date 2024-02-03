@@ -16,11 +16,11 @@ class VirtualKeyboardApp:
         self.root.geometry("1056x505")  # Adjust the width as needed
         
         self.assets_types = [
-            ("Default", "assets"),
+            ("T8 Default", "assets"),
             ("PlayStation", "assets_ps"),
             ("Xbox", "assets_xbox"),
         ]
-        
+
         self.selected_images = []
         self.include_dark = tk.BooleanVar(value=False)
 
@@ -28,11 +28,10 @@ class VirtualKeyboardApp:
         self.preview_frame = tk.Frame(self.root)
         self.preview_frame.grid(row=6, column=0, columnspan=5, pady=5)
 
-        self.images_folder_var = tk.StringVar(value="Default")
+        self.images_folder_var = tk.StringVar(value="T8 Default")
         self.images_folder_var.trace_add("write", self.load_and_reload_assets)
 
         # Get the selected assets folder
-        # self.selected_assets = self.assets_mapping.get(self.images_folder_var.get(), "assets")
         self.selected_assets = self.assets_types[0][1]
 
         self.create_widgets()
@@ -70,7 +69,7 @@ class VirtualKeyboardApp:
                 button.grid(row=i, column=j, padx=5, pady=5)
 
         # Drop-down menu for selecting assets
-        assets_menu_label = tk.Label(self.root, text="Select Assets:")
+        assets_menu_label = tk.Label(self.root, text="Button type:")
         assets_menu_label.grid(row=i + 1, column=3, pady=10, columnspan=1)
         assets_menu = tk.OptionMenu(self.root, self.images_folder_var, *[option[0] for option in self.assets_types])
         assets_menu.grid(row=i + 1, column=3, pady=10, columnspan=2)
@@ -100,17 +99,25 @@ class VirtualKeyboardApp:
         value_to_find = self.images_folder_var.get()  # Extract the string value
         index = next(i for i, option in enumerate(self.assets_types) if option[0] == value_to_find)  # Find the index
         new_asset_folder = self.assets_types[index][1]
+        
+        # Rebuilding the selected images list to make sure we are using the right assets        
+        temp_selected_images = []
+        for item in self.selected_images:
+            temp_selected_images.append(item.replace(self.selected_assets, new_asset_folder))      
+
+        self.selected_images = temp_selected_images
+        
+        # Set the asset folder to the currently selected asset option
         self.selected_assets = new_asset_folder
         
+        # Update the widgets
+        self.preview_frame.grid_forget()
         self.create_widgets()
         self.load_and_group_images()
         self.update_selected_images_display()
         self.update_preview_field()
 
     def load_and_group_images(self, *args):
-        # Get the selected assets folder
-        # selected_assets = self.assets_mapping.get(self.images_folder_var.get(), "assets")
-
         # Load Images from the selected folder, group them by prefix, and sort within each group
         image_files = sorted(os.listdir(self.selected_assets))
         image_files = sorted(image_files, key=lambda x: (x.split('_')[0], x))
@@ -145,6 +152,7 @@ class VirtualKeyboardApp:
         # Clear the entire list of selected images
         self.selected_images = []
         self.update_selected_images_display()
+        self.update_preview_field()
 
     def update_selected_images_display(self):
         # Display the selected images
@@ -209,7 +217,7 @@ class VirtualKeyboardApp:
             current_width += 80
 
         # Export normal image
-        combined_image.save("exported_image.png")
+        combined_image.save("notation.png")
         messagebox.showinfo("Save Successful", "Image file(s) created successfully.")
 
         # Export dark image if checkbox is checked
@@ -223,8 +231,7 @@ class VirtualKeyboardApp:
                 dark_image.paste(dark_img, (current_width, 0), mask=dark_img.convert('RGBA').split()[3])
                 current_width += 80
 
-            dark_image.save("exported_image_dark.png")
-            # messagebox.showinfo("Exported", "Dark Images exported as PNG: exported_image_Dark.png")
+            dark_image.save("notation_dark.png")
 
 if __name__ == "__main__":
     root = tk.Tk()

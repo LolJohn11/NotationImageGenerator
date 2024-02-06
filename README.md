@@ -22,6 +22,6 @@ Xbox:
 ![exported_image_xbox](https://github.com/LolJohn11/NotationImageGenerator/assets/49366383/49ca8e6d-e109-4ae0-bebd-30d356c9d098)
 
 ## To-do:
+- [X] Tooltips for text buttons
 - [ ] Character-specific buttons (stances, etc.)
-- [ ] Tooltips for text buttons
 - [ ] Adding a colored background to the exported image

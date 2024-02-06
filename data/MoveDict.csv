@@ -1,0 +1,122 @@
+Move;Name
+AIR;Airborne
+BB!;Balcony Break
+BT;Backturned
+CC;Crouch Cancel
+CD;Crouch Dash
+CH;Counter Hit
+CL;Clean Hit
+DASH;Dash
+DLAY;Delay
+FB!;Floor Break
+FBL!;Floor Blast
+FBL!;Floor Blast
+FC;Full Crouch
+FDFA;Face Down, Feet Away
+FDFT;Face Down, Feet Towards
+FUFA;Face Up, Feet Away
+FUFT;Face Up, Feet Towards
+HEAT;Heat State
+JF;Just Frame
+LP;Low Parry
+RAGE;Rage State
+SS;Sidestep
+SSL;Sidestep Left
+SSR;Sidestep Right
+SWL;Sidewalk Left
+SWR;Sidewalk Right
+T!;Tornado Spin
+WB!;Wall Break
+WBL!;Wall Blast
+WBO!;Wall Bound
+WR;While Running
+WS;While Standing
+hFB!;Hard Floor Break
+hFBL!;Hard Floor Blast
+hFBL!;Hard Floor Blast
+hFC;Half Crouch
+hWB!;Hard Wall Break
+iWS;Intant While Standing
+ALB;Quick Spin
+AOP;Phoenix
+BKP;Backup
+BOK;Fo Bu
+BOT;Boot
+CD_All;Crouch Dash
+CD_Jin;Breaking Step
+CD_Kuma;Beast Step
+CD_Leo;Jin Bu
+CRO;Mourning Crow
+CS;Cormorant Step
+DBT;Dual Boot
+DCK;Ducking
+DEN;Dynamic Entry
+DES;Destructive Form
+DEW;Dew Glide
+DGF;Manji Dragonfly
+DPD;Deep Dive
+DSS;Dragon Charge
+DVK;Devil Form
+EWGF;Electric Wind God Fist
+EXD;Ducking In
+FLE;Flea
+FLK;Flicker Stance
+FLY;Fly
+GEN;Genjitsu
+GMH;Gamma Howl
+HBS;Hunting
+HMS;Hitman
+HPF;Haze Palm Fist
+HRM;Hermit
+HSP;Handstand Position
+HYP;Hypnotist
+IAI;Iai Stance
+IND;Indian Stance
+IZU;Izumo
+JGR;Jaguar Sprint/Jaguar Run
+JGS;Jaguar Step
+KIN;Kincho
+KNK;Jin Ji Du Li
+KNP;Kenpo Step (Deceptive Step)
+LCT;Leg Cutter
+LEN;Limited Entry
+LFF;Left Foot Forward
+LFS;Left Flamingo Stance
+LIB;Libertador
+LNH;Lionheart
+LWV;Ducking Left
+MED;Meditation
+MIA;Miare
+MNT;Mantis Stance
+MS;Mist Step
+NIM;Nimble Shift
+NSS;Mutou no Kiwami
+PKB;Peekaboo
+PRF;Perfumer
+RAB;Feisty Rabbit
+RFF;Right Foot Forward
+RFS;Right Flamingo Stance
+RLX;Relaxed Position
+ROL;Bear Roll
+RWV;Ducking Right
+SCR;Scarecrow Stance
+SEN_Lars;Silent Entry
+SEN_Reina;Sento
+SIT;Sit Down
+SLS;Slither Step
+SNE;Snake Eyes
+SNK_Dragunov;Sneak
+SNK_Shaheen;Stealth Step
+SSH;Senshin
+STB;Starburst
+STC;Shifting Clouds
+SWA;Sway
+SWY;Sway
+SZN;Soulzone
+TRT;Tarantula Stance
+UNS;Unsoku
+WDS;Wind Step
+WGF;Wind God Fist
+WGS;Wind God Step
+WRA;Heaven's Wrath
+ZEN;Zanshin

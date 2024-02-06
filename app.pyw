@@ -1,4 +1,5 @@
 import os
+import csv
 import ctypes
 import tkinter as tk
 from tkinter import filedialog, messagebox
@@ -18,7 +19,7 @@ class VirtualKeyboardApp:
         if os.path.exists(icon_path):
             self.root.iconbitmap(icon_path)
 
-        self.root.geometry("990x715")  # Window size
+        self.root.geometry("990x790")  # Window size
 
         self.assets_types = [
             ("T8 Default", "assets"),
@@ -62,60 +63,30 @@ class VirtualKeyboardApp:
             "Zafina",
         ]
         
-        # Define a dictionary to store tooltip text for each filename
-        self.tooltip_dict = {
-            #"FBL!.png": "Floor Blast",
-            #"hFBL!.png": "Hard Floor Blast",
-            #"AIR.png": "Airborne",
-            #"BB!.png": "Balcony Break",
-            #"BT.png": "Backturned",
-            #"CC.png": "Crouch Cancel",
-            #"CD.png": "Crouch Dash",
-            #"CH.png": "Counter Hit",
-            #"CL.png": "Clean Hit",
-            #"DASH.png": "Dash",
-            #"DLAY.png": "Delay",
-            #"FB!.png": "Floor Break",
-            #"FBL!.png": "Floor Blast",
-            #"FC.png": "Full Crouch",
-            #"FDFA.png": "Face Down, Feet Away",
-            #"FDFT.png": "Face Down, Feet Towards",
-            #"FUFA.png": "Face Up, Feet Away",
-            #"FUFT.png": "Face Up, Feet Towards",
-            #"HEAT.png": "Heat State",
-            #"hFB!.png": "Hard Floor Break",
-            #"hFBL!.png": "Hard Floor Blast",
-            #"hFC.png": "Half Crouch",
-            #"hWB!.png": "Hard Wall Break",
-            #"iWS.png": "Intant While Standing",
-            #"JF.png": "Just Frame",
-            #"LP.png": "Low Parry",
-            #"RAGE.png": "Rage State",
-            #"SS.png": "Sidestep",
-            #"SSL.png": "Sidestep Left",
-            #"SSR.png": "Sidestep Right",
-            #"SWL.png": "Sidewalk Left",
-            #"SWR.png": "Sidewalk Right",
-            #"T!.png": "Tornado Spin",
-            #"WB!.png": "Wall Break",
-            #"WBL!.png": ""Wall Blast,
-            #"WBO!.png": "Wall Bound",
-            #"WR.png": "While Running",
-            #"WS.png": "While Standing",
-            # Add more entries as needed
-        }
-        
+        # Open the MoveDict CSV file for reading
+        movedict_csv = os.path.join(os.getcwd(), "data", "MoveDict.csv")
+        with open(movedict_csv, mode='r') as file:
+            csv_reader = csv.DictReader(file, delimiter=';')
+         
+            # Initialize an empty list to store the dictionaries
+            self.MoveDict = []
+         
+            # Iterate through each row in the CSV file
+            for row in csv_reader:
+                # Append each row (as a dictionary) to the list
+                self.MoveDict.append(row)
+          
         self.selected_images = []
         self.include_dark = tk.BooleanVar(value=False)
 
         # Initialize preview_frame
         self.preview_frame = tk.Frame(self.root)
         self.preview_frame.grid(row=8, column=0, columnspan=5, pady=5)
-
+        
+        # Setting variables
         self.images_folder_var = tk.StringVar(value="T8 Default")
         self.images_folder_var.trace_add("write", self.load_and_reload_assets)
         
-        #self.characters_arr = os.listdir("/char")
         self.character_var = tk.StringVar(value="None")
         self.character_var.trace_add("write", self.update_character_image)
 
@@ -151,10 +122,11 @@ class VirtualKeyboardApp:
                 row = min(int(filename.split('_')[0][1]), 8)  # Ensure row doesn't exceed 8
                 self.image_buttons[row - 1].append(button)
 
-                # Check if there's a tooltip for the filename
-                tooltip_text = self.tooltip_dict.get(filename)
-                if tooltip_text:
-                    self.tooltips.append(Hovertip(button, tooltip_text, hover_delay=500))
+                # Looking up the desired move name
+                self.file_name = filename
+                move_name = self.find_move_name(self.MoveDict, self.file_name)
+                if move_name:
+                    self.tooltips.append(Hovertip(button, move_name, hover_delay=300))
 
         # Arrange buttons in separate rows
         for i, row_buttons in enumerate(self.image_buttons):
@@ -197,6 +169,13 @@ class VirtualKeyboardApp:
         self.preview_frame = tk.Frame(self.root)
         self.preview_frame.grid(row=i + 3, column=0, columnspan=5, pady=5)
 
+    # Function for finding the moves full names
+    def find_move_name(self, *args):
+        for data in self.MoveDict:
+            if data['Move'] in self.file_name:
+                return data['Name']
+        return None  # Return None if the move is not found
+    
     def update_character_image(self, *args):
         # Get the selected character
         selected_character = self.character_var.get()

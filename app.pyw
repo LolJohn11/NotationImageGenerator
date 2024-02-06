@@ -229,6 +229,7 @@ class VirtualKeyboardApp:
         # Get the moves for the selected character
         char_moves_str = self.find_character_moves(self.CharMoves, selected_character)
         char_moves = char_moves_str.split(", ")
+        char_moves.sort()
 
         # Initialize character-specific buttons
         self.character_image_buttons = []

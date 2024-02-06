@@ -63,18 +63,26 @@ class VirtualKeyboardApp:
             "Zafina",
         ]
         
-        # Open the MoveDict CSV file for reading
+        # Open the MoveDict.csv and turn it into a dictionary
         movedict_csv = os.path.join(os.getcwd(), "data", "MoveDict.csv")
         with open(movedict_csv, mode='r') as file:
             csv_reader = csv.DictReader(file, delimiter=';')
          
             # Initialize an empty list to store the dictionaries
             self.MoveDict = []
-         
             # Iterate through each row in the CSV file
             for row in csv_reader:
                 # Append each row (as a dictionary) to the list
                 self.MoveDict.append(row)
+        
+        # Open the CharMoves.csv and turn it into a dictionary
+        charmoves_csv = os.path.join(os.getcwd(), "data", "CharMoves.csv")
+        with open(charmoves_csv, mode='r') as file:
+            csv_reader = csv.DictReader(file, delimiter=';')
+
+            self.CharMoves = []
+            for row in csv_reader:
+                self.CharMoves.append(row)
           
         self.selected_images = []
         self.include_dark = tk.BooleanVar(value=False)
@@ -88,7 +96,9 @@ class VirtualKeyboardApp:
         self.images_folder_var.trace_add("write", self.load_and_reload_assets)
         
         self.character_var = tk.StringVar(value="None")
-        self.character_var.trace_add("write", self.update_character_image)
+        self.character_var.trace_add("write", self.update_character_images)
+
+        self.character_image_buttons = []
 
         # Get the selected assets folder
         self.selected_assets = self.assets_types[0][1]
@@ -110,6 +120,8 @@ class VirtualKeyboardApp:
             for filename in group:
                 if "_Dark" in filename:
                     continue  # Skip buttons with "_Dark" suffix
+                if "R9_" in filename:
+                    continue  # Skip buttons with "R9" prefix
 
                 # Fix the image_path for the default option
                 image_path = os.path.join(self.selected_assets, filename)
@@ -122,8 +134,8 @@ class VirtualKeyboardApp:
                 row = min(int(filename.split('_')[0][1]), 8)  # Ensure row doesn't exceed 8
                 self.image_buttons[row - 1].append(button)
 
-                # Looking up the desired move name
-                self.file_name = filename
+                # Matching a tooltip with a button
+                self.file_name = filename[6:][:-4]
                 move_name = self.find_move_name(self.MoveDict, self.file_name)
                 if move_name:
                     self.tooltips.append(Hovertip(button, move_name, hover_delay=300))
@@ -172,15 +184,23 @@ class VirtualKeyboardApp:
     # Function for finding the moves full names
     def find_move_name(self, *args):
         for data in self.MoveDict:
-            if data['Move'] in self.file_name:
+            if data['Move'] == self.file_name:
                 return data['Name']
         return None  # Return None if the move is not found
     
-    def update_character_image(self, *args):
+    # Function for finding the moves for the selected Character
+    def find_character_moves(self, *args):
+        for data in self.CharMoves:
+            if data['Character'] == self.character_var.get():
+                return data['Moves']
+        return None  # Return None if the character is not found
+    
+    def update_character_images(self, *args):
+        
         # Get the selected character
         selected_character = self.character_var.get()
 
-        # Update the image button with the selected character's image
+        #Update the image button with the selected character's image
         if selected_character == "None":
             self.character_image_button.configure(image='')
             self.character_image_button.config(state=tk.DISABLED)
@@ -197,7 +217,60 @@ class VirtualKeyboardApp:
             else:
                 messagebox.showwarning("Image Not Found", f"Image not found for character: {selected_character}")
                 self.character_var.set("None")
-    
+        
+        # Clear existing character-specific buttons
+        for button_row in self.character_image_buttons:
+            for button in button_row:
+                button.grid_forget()  # Hide the button
+
+        if selected_character == "None":
+            return  # No need to create character-specific buttons when "None" is selected
+
+        # Get the moves for the selected character
+        char_moves_str = self.find_character_moves(self.CharMoves, selected_character)
+        char_moves = char_moves_str.split(", ")
+
+        # Initialize character-specific buttons
+        self.character_image_buttons = []
+
+        # Counter to keep track of the current column index
+        column_index = 0
+
+        # Iterate over the moves of the selected character
+        for move in char_moves:
+            # Create a row for each move
+            button_row = []
+            for filename in os.listdir(self.selected_assets):
+                # Check if the filename contains the move string
+                if move in filename:
+                    if "_Dark" in filename:
+                        continue  # Skip buttons with "_Dark" suffix
+
+                    # Create and configure the button
+                    image_path = os.path.join(self.selected_assets, filename)
+                    img = Image.open(image_path).resize((50, 50), Image.LANCZOS)  # Resize for display
+                    img_tk = ImageTk.PhotoImage(img)
+                    button = tk.Button(self.image_frame, image=img_tk, command=lambda i=image_path: self.toggle_image(i))
+                    button.image = img_tk
+                    button_row.append(button)
+                    
+                    # Add tooltip if available
+                    self.file_name = filename[3:][:-4]
+                    move_name = self.find_move_name(self.MoveDict, self.file_name)
+                    if move_name:
+                        self.tooltips.append(Hovertip(button, move_name, hover_delay=300))
+
+            # Add the row of buttons to the list
+            self.character_image_buttons.append(button_row)
+
+            # Place the buttons in the eighth row of the image buttons' grid
+            for i, button in enumerate(button_row):
+                button.grid(row=7, column=column_index, padx=5, pady=5)
+                column_index += 1  # Increment column index for the next button
+
+        # Update the preview field
+        self.update_preview_field()
+
     def add_character_image(self):
         selected_character = self.character_var.get()
 
@@ -230,7 +303,7 @@ class VirtualKeyboardApp:
         self.character_image_button.grid_forget()
         self.create_widgets()
         self.load_and_group_images()
-        self.update_character_image()
+        self.update_character_images()
         self.update_selected_images_display()
         self.update_preview_field()
     

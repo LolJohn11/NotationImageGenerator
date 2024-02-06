@@ -6,29 +6,29 @@ Azucena;LIB
 Bryan;SWA, SLS, SNE
 Claudio;STB
 Devil Jin;CRO, FLY, EWGF, WGF, WGS
-Dragunov;SNK
+Dragunov;SNK_Dragunov
 Feng;KNP, STC
 Hwoarang;LFF, LFS, RFF, RFS
 Jack 8;SIT, GMH
-Jin;CD, ZEN
+Jin;CD_Jin, ZEN
 Jun;GEN, IZU, MIA
 Kazuya;DVK, EWGF, WGF, WGS
-King;CD, JGR, JGS
+King;CD_King, JGR, JGS
 Kuma;SIT, HBS, ROL
-Lars;DEN, LEN, SEN
+Lars;DEN, LEN, SEN_Lars
 Law;DSS
 Lee;HMS, MS
-Leo;CD, BOK, KNK
+Leo;CD_Leo, BOK, KNK
 Leroy;HRM, NIM
 Lili;DEW, RAB
-Nina;SWA, CD
+Nina;SWA, CD_All
 Panda;SIT, HBS, ROL
 Paul;SWA, CS, DPD
-Raven;CD, SZN
-Reina;EWGF, WGF, WGS, SEN, SSH, UNS, WDS, WRA
-Shaheen;SNK
+Raven;CD_All, SZN
+Reina;EWGF, WGF, WGS, SEN_Reina, SSH, UNS, WDS, WRA
+Shaheen;SNK_Shaheen
 Steve;ALB, DCK, EXD, FLK, LNH, LWV, PKB, RWV, SWY
-Victor;IAI,PRF
+Victor;IAI, PRF
 Xiaoyu;AOP, HYP
 Yoshimitsu;DGF, FLE, IND, KIN, MED, NSS
 Zafina;MNT, SCR, TRT

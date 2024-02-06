@@ -3,7 +3,6 @@ AIR;Airborne
 BB!;Balcony Break
 BT;Backturned
 CC;Crouch Cancel
-CD;Crouch Dash
 CH;Counter Hit
 CL;Clean Hit
 DASH;Dash
@@ -18,6 +17,7 @@ FUFA;Face Up, Feet Away
 FUFT;Face Up, Feet Towards
 HEAT;Heat State
 JF;Just Frame
+KND;Knockdown
 LP;Low Parry
 RAGE;Rage State
 SS;Sidestep
@@ -33,7 +33,6 @@ WR;While Running
 WS;While Standing
 hFB!;Hard Floor Break
 hFBL!;Hard Floor Blast
-hFBL!;Hard Floor Blast
 hFC;Half Crouch
 hWB!;Hard Wall Break
 iWS;Intant While Standing
@@ -44,7 +43,7 @@ BOK;Fo Bu
 BOT;Boot
 CD_All;Crouch Dash
 CD_Jin;Breaking Step
-CD_Kuma;Beast Step
+CD_King;Beast Step
 CD_Leo;Jin Bu
 CRO;Mourning Crow
 CS;Cormorant Step

@@ -230,7 +230,7 @@ class VirtualKeyboardApp:
         char_moves_str = self.find_character_moves(self.CharMoves, selected_character)
         char_moves = char_moves_str.split(", ")
         char_moves.sort()
-
+        print(char_moves)
         # Initialize character-specific buttons
         self.character_image_buttons = []
 
@@ -243,7 +243,7 @@ class VirtualKeyboardApp:
             button_row = []
             for filename in os.listdir(self.selected_assets):
                 # Check if the filename contains the move string
-                if move in filename:
+                if move == filename[3:][:-4]:
                     if "_Dark" in filename:
                         continue  # Skip buttons with "_Dark" suffix
 

@@ -1,7 +1,7 @@
 # Notation Image Generator
 Generating images of combo notations for Tekken 8. Done with ChatGPT and some blind tinkering.
 
-![image](https://github.com/LolJohn11/NotationImageGenerator/assets/49366383/dc5b2d7b-0ce3-4798-b708-ca0a2c04d603)
+![image](https://github.com/LolJohn11/NotationImageGenerator/assets/49366383/8701866b-312c-458d-a3bf-ade5abe56d98)
 
 ## Usage
 0. Make sure you have Python installed. The app should work with Python 3.9 onwards, haven't tested with earlier versions.

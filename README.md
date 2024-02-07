@@ -8,6 +8,13 @@ Generating images of combo notations for Tekken 8. Done with ChatGPT and some bl
 1. Clone the repo OR download it as a .zip archive.
 2. Launch the `app.pyw` file.
 
+## Functionality
+- Press the move button to add it to an image. Use `Backspace` to remove the last image and `Clear` to start from scratch. Clicking `Save as PNG` will create an image file in the app's folder.
+- Select the `Character` from the drop-down menu to bring up their specific moves (character portrait is also a button!).
+- Hover over a "text" button to see a tooltip with the full name of the move.
+- Enable the `Include dark notation` option to also generate a dark version of the notation image (useful if you want to mimic the in-game "play demo" visuals for combo notation).
+- Change the `Button style` to customize the look of the buttons in the notation (see examples of available button styles below).
+
 ## Examples of different button styles
 
 Default:

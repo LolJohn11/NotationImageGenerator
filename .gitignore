@@ -1,1 +1,5 @@
 extra/
+build/
+dist/
+app.exe
+app.spec

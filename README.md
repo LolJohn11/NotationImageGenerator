@@ -24,5 +24,6 @@ Xbox:
 
 ## To-do:
 - [X] Tooltips for text buttons
-- [ ] Character-specific buttons (stances, etc.)
+- [X] Character-specific buttons (stances, etc.)
+- [ ] UI Improvements
 - [ ] Adding a colored background to the exported image

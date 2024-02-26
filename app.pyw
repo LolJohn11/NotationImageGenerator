@@ -408,9 +408,22 @@ class VirtualKeyboardApp:
             combined_image.paste(img, (current_width, 0), mask=img.convert('RGBA').split()[3])
             current_width += 80
 
-        # Export normal image
-        combined_image.save("notation.png")
-        messagebox.showinfo("Save Successful", "Image file(s) created successfully.")
+        # Define the base file name
+        base_filename = "notation.png"
+
+        # Check if the file already exists
+        if os.path.exists(base_filename):
+            # If it does, find a unique file name
+            suffix = 1
+            while os.path.exists(f"notation_{suffix}.png"):
+                suffix += 1
+
+            # Update the base file name with the unique suffix
+            base_filename = f"notation_{suffix}.png"
+
+        # Save the combined image
+        combined_image.save(base_filename)
+        messagebox.showinfo("Save Successful", f"Image file(s) created successfully.")
 
         # Export dark image if checkbox is checked
         if self.include_dark.get():
@@ -423,7 +436,22 @@ class VirtualKeyboardApp:
                 dark_image.paste(dark_img, (current_width, 0), mask=dark_img.convert('RGBA').split()[3])
                 current_width += 80
 
-            dark_image.save("notation_dark.png")
+            # Define the base file name for dark image
+            dark_base_filename = base_filename.replace(".png", "_dark.png")
+
+            # Check if the dark image file already exists
+            if os.path.exists(dark_base_filename):
+                # If it does, find a unique file name
+                suffix = 1
+                while os.path.exists(f"notation_{suffix}_dark.png"):
+                    suffix += 1
+
+                # Update the base file name with the unique suffix
+                dark_base_filename = f"notation_{suffix}_dark.png"
+
+            # Save the dark image
+            dark_image.save(dark_base_filename)
+            # messagebox.showinfo("Save Successful", f"Dark image file '{dark_base_filename}' created successfully.")
 
 if __name__ == "__main__":
     root = tk.Tk()

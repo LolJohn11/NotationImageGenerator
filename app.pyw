@@ -36,6 +36,7 @@ class VirtualKeyboardApp:
             "Claudio",
             "Devil Jin",
             "Dragunov",
+            "Eddy",
             "Feng",
             "Hwoarang",
             "Jack 8",

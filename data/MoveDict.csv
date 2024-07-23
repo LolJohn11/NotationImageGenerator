@@ -41,6 +41,7 @@ AOP;Phoenix
 BKP;Backup
 BOK;Fo Bu
 BOT;Boot
+CAT;Cat Stance
 CD_All;Crouch Dash
 CD_Jin;Breaking Step
 CD_King;Beast Step
@@ -63,10 +64,12 @@ FLK;Flicker Stance
 FLY;Fly
 GEN;Genjitsu
 GMH;Gamma Howl
+HAE;Heaven and Earth
 HBS;Hunting Bear Stance
 HMS;Hitman Stance
 HPF;Haze Palm Fist
 HRM;Hermit
+HRS;Horse Stance
 HSP;Bananeira (Handstand Position)
 HYP;Hypnotist
 IAI;Iai Stance
@@ -119,5 +122,6 @@ UNS;Unsoku
 WDS;Wind Step
 WGF;Wind God Fist
 WGS;Wind God Step
+WLF;Stalking Wolf Stance
 WRA;Heaven's Wrath
 ZEN;Zanshin

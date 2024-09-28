@@ -38,6 +38,7 @@ class VirtualKeyboardApp:
             "Dragunov",
             "Eddy",
             "Feng",
+            "Heihachi",
             "Hwoarang",
             "Jack 8",
             "Jin",

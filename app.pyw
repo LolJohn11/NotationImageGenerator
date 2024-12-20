@@ -34,6 +34,7 @@ class VirtualKeyboardApp:
             "Azucena",
             "Bryan",
             "Claudio",
+            "Clive",
             "Devil Jin",
             "Dragunov",
             "Eddy",

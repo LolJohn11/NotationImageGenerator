@@ -30,6 +30,7 @@ class VirtualKeyboardApp:
         self.all_characters = [
             "None",
             "Alisa",
+            "Anna",
             "Asuka",
             "Azucena",
             "Bryan",

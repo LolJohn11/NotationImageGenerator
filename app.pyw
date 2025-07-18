@@ -39,6 +39,7 @@ class VirtualKeyboardApp:
             "Devil Jin",
             "Dragunov",
             "Eddy",
+            "Fahkumram",
             "Feng",
             "Heihachi",
             "Hwoarang",

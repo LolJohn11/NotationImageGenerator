@@ -31,6 +31,7 @@ class VirtualKeyboardApp:
             "None",
             "Alisa",
             "Anna",
+            "Armor King",
             "Asuka",
             "Azucena",
             "Bryan",

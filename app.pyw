@@ -58,6 +58,7 @@ class VirtualKeyboardApp:
             "Lidia",
             "Lili",
             "Lidia",
+            "Miary Zo",
             "Nina",
             "Panda",
             "Paul",

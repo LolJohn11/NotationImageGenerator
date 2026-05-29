@@ -50,6 +50,7 @@ class VirtualKeyboardApp:
             "Kazuya",
             "King",
             "Kuma",
+            "Kunimitsu",
             "Lars",
             "Law",
             "Lee",

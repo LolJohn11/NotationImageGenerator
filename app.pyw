@@ -34,6 +34,7 @@ class VirtualKeyboardApp:
             "Armor King",
             "Asuka",
             "Azucena",
+            "Bob",
             "Bryan",
             "Claudio",
             "Clive",
